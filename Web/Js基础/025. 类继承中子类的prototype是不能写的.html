@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //function声明的函数/构造函数的prototype是可写的
+    //class声明的类构造函数的prototype是不可写的
+    'use strict'
+    function a(){}
+    class b{}
+    console.log('a.prototype', Object.getOwnPropertyDescriptor(a, 'prototype'));//writable 为true
+    console.log('b.prototype', Object.getOwnPropertyDescriptor(b, 'prototype'));//writable false
+
+  </script>
+</body>
+</html>

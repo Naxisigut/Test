@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+      .box {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        margin-bottom: 10px;
+      }
+
+      .sonbox {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+      }
+
+      .box2 {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        margin-bottom: 10px;
+      }
+
+      .sonbox2 {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="sonbox"></div>
+    </div>
+    <div class="box2">
+      <div class="sonbox2"></div>
+    </div>
+    <!-- <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div> -->
+  </body>
+  <script>
+    'use strict';
+
+    // let tempArray = Array
+    // Array = function(){
+    //     new tempArray(...arguments)
+    // }
+    // Array.prototype.__proto__ = tempArray.prototype
+
+    // let tempArray = Array
+    // Array = class extends tempArray{
+    //   constructor(){
+    //     super(...arguments)
+    //   }
+    // }
+    // console.log(Array.prototype === tempArray.prototype);//false
+    // //此时Array已经不是原生的Array了，但依然可以调用原生Array的方法
+
+    // //测试
+    // let arr = new Array(1,1);
+    // console.log(arr); //[1,1]
+
+    // arr.push(2)
+    // console.log(arr);//[1, 1, 2]
+
+    // //Array的
+    // // Array.prototype = null
+    // console.log(Object.getOwnPropertyDescriptor(Array, 'prototype'));
+    // console.log(Array.prototype); //undefined
+
+    // var car = (function () {
+    //   var start = 13; // 起步价 局部变量
+    //   var total = 0; // 总价 局部变量
+    //   return {
+    //     // 正常的总价
+    //     price: function (n) {
+    //       if (n <= 3) {
+    //         total = start;
+    //       } else {
+    //         total = start + (n - 3) * 5;
+    //       }
+    //       return total;
+    //     },
+    //     // 拥堵之后的费用
+    //     yd: function (flag) {
+    //       return flag ? total + 10 : total;
+    //     },
+    //   };
+    // })();
+     function cal() {
+      var start = 13; // 起步价 局部变量
+      var total = 0; // 总价 局部变量
+      return {
+        // 正常的总价
+        price: function (n) {
+          if (n <= 3) {
+            total = start;
+          } else {
+            total = start + (n - 3) * 5;
+          }
+          return total;
+        },
+        // 拥堵之后的费用
+        yd: function (flag) {
+          return flag ? total + 10 : total;
+        },
+      };
+    };
+    let car = cal()
+    console.log(car.price(5)); // 23
+    console.log(car.yd(true)); // 33
+  </script>
+</html>

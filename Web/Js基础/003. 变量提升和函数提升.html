@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // //1.let声明不会提升
+      // console.log(a); //报错
+      // let a = 0;
+
+      // //2.未声明直接赋值得到的变量，虽然是全局变量，但不会提升，只能在后面使用
+      // console.log(a); //报错
+      // a = 0;
+
+      //3.var声明会被提升
+
+      // //4.函数声明和定义被提升了
+      // console.log(a());//输出0
+      // function a() {
+      //   return 0;
+      // }
+
+      //5.函数表达式不会被提升
+      console.log(a());//报错
+      let a = function () {
+        return 0;
+      };
+    </script>
+  </head>
+  <body></body>
+</html>

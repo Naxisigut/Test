@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      'use strict';
+      //filter的参数是一个回调函数，所以这两个函数的返回值是两个闭包函数
+
+      function inBetween(min, max) {
+        return function (ele) {
+          if (ele >= min && ele <= max) {
+            return true;
+          } else return false;
+        };
+      }
+      function inArray(arr) {
+        return function (ele) {
+          for (let e of arr) {
+            if (e === ele) return true;
+          }
+          return false;
+        };
+      }
+
+      let arr = [1, 2, 3, 4, 5, 6, 7];
+      console.log(arr.filter(inBetween(3, 6)));
+      console.log(arr.filter(inArray([1, 2, 10])));
+    </script>
+  </body>
+</html>

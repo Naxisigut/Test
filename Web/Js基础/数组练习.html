@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // //1. 简单数组操作
+      // // a. 创建一个数组 styles ，里面存储有 “Jazz” 和 “Blues”。
+      // // b. 将 “Rock-n-Roll” 从数组末端添加进去。
+      // // c. 用 “Classics” 替换掉数组最中间的元素。查找数组最中间的元素的代码应该适用于任何奇数
+      // // 长度的数组。
+      // // d. 去掉数组的第一个值并显示它。
+      // // e. 在数组前面添加 Rap 和 Reggae 。
+      // let styles = ['Jazz', 'Blues']; //创建一个数组 styles ，里面存储有 “Jazz” 和 “Blues”
+      // console.log(styles.push('Rock-n-Roll')); //将 “Rock-n-Roll” 从数组末端添加进去
+      // if (styles.length % 2 == 1) {
+      //   styles[Math.floor(styles.length / 2)] = 'Classics';
+      // } //用 “Classics” 替换掉数组最中间的元素
+      // console.log(styles);
+      // console.log(styles.shift());//去掉数组的第一个值并显示它。
+      // console.log(styles.unshift('Rap', 'Reggae')); //在数组前面添加 Rap 和 Reggae 。
+
+      // //2.输入数字求和
+      // // 写出函数 sumInput() ，要求如下：
+      // // 使用 prompt 向用户索要值，并存在数组中。
+      // // 当用户输入了非数字、空字符串或者点击“取消”按钮的时候，问询结束。
+      // // 计算并返回数组所有项之和。
+      // // P.S. 0 是有效的数字，不要因为是 0 就停止问询。
+
+      // //经过思考，归纳为：
+      // // 1.多次输入纯数字字符串，以无输入点击确认结束，返回计算值
+      // // 2.输入非纯数字字符串，立即返回Error
+      // // 3.第一次输入即以无输入确认结束时，返回no input
+      // // 4.点击取消时返回Exit
+      // function sumInput() {
+      //   let input = [];
+      //   let sum;
+      //   let a;
+      //   for (;;) {
+      //     a = prompt('请输入');
+      //     // if (a != 0 && !+a || a==='') {
+      //       // 非纯数字字符串，null，''返回1
+      //       //这里废了比较大的力气，主要是需要避免数字0被误判，以及非纯字符串转为NaN后与任何值不相等的特性：
+      //       // 1.非纯数字，(NaN!=0 && !NaN) == true
+      //       // 2.null，注意要!=和==比较时，null不会发生隐式转换，所以(null!=0 && !0) == true
+      //       // 3.空字符串，(a==='') == true
+      //       // 4.0 (0!=0 && !0) == false, (0==='') == false,故 false
+      //       // 5.'0' (0!=0) == false, (0==='') == false,故 false
+
+      //       //借助数字方法，这里可以修改为
+      //       if(isNaN(a) || a==='' || a===null){
+      //       break;
+      //     }
+      //     input.push(+a);
+      //   }
+      //   if (a === null) return (sum = 'Exit');//点击取消时返回Exit
+      //   if (a === '') {
+      //     if (input.length == 0) return (sum = 'no input');//第一次输入即以无输入确认结束时，返回no input
+      //     else {//length不为0，说明数组内有正常数字，故返回计算值
+      //       sum = 0;
+      //       for (let i of input) {
+      //         sum += i;
+      //       }
+      //       return sum;
+      //     }
+      //   }
+      //   return (sum = 'Error');//排除以上的情况，就只剩输入非纯数字字符串，立即返回Error
+      // }
+      // console.log(sumInput());
+
+      // // 3.给你一个数组，如[4, 3, 5, 8, 9, 3, 10, 6]，数组中的每一个元素后面的第一个比它大的元素为其好朋友。找到每一个元素的好朋友的==位置==（索引+1）返回，如果没有好朋友，返回0。例如[2, 5, 4, 1] 返回 [2, 0, 0, 0]。
+      // let arr2 = [4, 3, 5, 8, 9, 3, 10, 6];
+      // let arr = [2, 5, 4, 1];
+      // let arr3 = [1, 2, 3, 4];
+
+      // //方法一 挨个遍历好朋友
+      // function getFArr(arr) {
+      //   let newArr = [];
+      //   for (let index = 0; index < arr.length; index++) {
+      //     let flag = false;
+      //     let i = index + 1;
+      //     for (; i < arr.length; i++) {
+      //       if (arr[i] > arr[index]) {
+      //         flag = true;
+      //         break;
+      //       }
+      //     }
+      //     newArr.push(flag ? i + 1 : 0);
+      //   }
+      //   return newArr;
+      // }
+      // console.log(getFArr(arr)); //[2,0,0,0]
+      // console.log(getFArr(arr2)); //[3, 3, 4, 5, 7, 7, 0, 0]
+      // console.log(getFArr(arr3)); //[3, 3, 4, 5, 7, 7, 0, 0]
+
+      // // 方法二 优化，当后一个数比目前的数小时，其好朋友是同一个元素
+      // function getFArr2(arr) {
+      //   let newArr = [];
+      //   for (let i = 0; i < arr.length; ) {
+      //     let count = 1;
+      //     let flag = false;
+      //     //找到该元素的好朋友，
+      //     for (; count < arr.length - i; count++) {
+      //       if (arr[i + count] > arr[i]) {
+      //         flag = true;
+      //         break;
+      //       }
+      //     }
+      //     let pos = flag ? i + count + 1 : 0;
+      //     for (let cnt = count; cnt > 0; cnt--) {
+      //       newArr.push(pos);
+      //     }
+      //     i += count;
+      //   }
+      //   return newArr;
+      // }
+      // console.log(getFArr2(arr)); //[2,0,0,0]
+      // console.log(getFArr2(arr2)); //[3, 3, 4, 5, 7, 7, 0, 0]
+      // console.log(getFArr2(arr3)); //[3, 3, 4, 5, 7, 7, 0, 0]
+
+      //方法三 优化，不采用计数器，直接用好朋友的索引
+      function getFArr3(arr) {
+        let newArr = [];
+        for (let i = 0; i < arr.length; ) {
+          let flag = false;
+          let friendIndex = 0;
+          //寻找好朋友元素索引
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] < arr[j]) {
+              flag = true;
+              friendIndex = j; //friendIndex为好朋友的索引
+              break;
+            }
+            //没有找到，则friendIndex保持为0
+          }
+          if (flag == true) {
+            //把好朋友的位置输出至新数组，直至新数组的长度=好朋友索引
+            for (; newArr.length < friendIndex; ) {
+              newArr.push(friendIndex + 1);
+            }
+            //下一个循环应寻找好朋友的好朋友
+            i = friendIndex;
+          } else {
+            //此时说明后面没有好朋友，输出0直至新数组长度与原数组长度相等
+            for (; newArr.length < arr.length; ) {
+              newArr.push(0);
+            }
+            //此时虽然i还没有遍历完，但不需要继续循环了
+            //或者可以直接把最外层的for循环的循环条件改为newArr.length<arr.length
+            break;
+          }
+        }
+        return newArr;
+      }
+      console.log(getFArr3(arr)); //[2,0,0,0]
+      console.log(getFArr3(arr2)); //[3, 3, 4, 5, 7, 7, 0, 0]
+      console.log(getFArr3(arr3)); //[3, 3, 4, 5, 7, 7, 0, 0]
+
+      // //老师的方法
+      // function getGoodFriend(arr) {
+      //   let ins = [];
+      //   let stack = [];
+      //   let index = [];
+      //   for (let i = arr.length - 1; i >= 0; i--) {
+      //     while (stack.length && stack.at(-1) <= arr[i]) {
+      //       stack.pop();
+      //       index.pop();
+      //     }
+      //     if (stack.length) {
+      //       ins[i] = index.at(-1);
+      //     } else {
+      //       ins[i] = 0; //第一次执行，最后一个数一定没有好朋友
+      //     }
+      //     stack.push(arr[i]);
+      //     index.push(i + 1);
+      //   }
+      //   return ins;
+      // }
+      // console.log(getGoodFriend(arr)); //[2,0,0,0]
+      // console.log(getGoodFriend(arr2)); //[3, 3, 4, 5, 7, 7, 0, 0]
+      // console.log(getGoodFriend(arr3)); //[3, 3, 4, 5, 7, 7, 0, 0]
+    </script>
+  </head>
+  <body></body>
+</html>

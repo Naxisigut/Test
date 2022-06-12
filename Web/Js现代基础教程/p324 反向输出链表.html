@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    'use strict';
+    let list = {
+      value: 1,
+      next: {
+        value: 2,
+        next: {
+          value: 3,
+          next: {
+            value: 4,
+            next: null,
+          },
+        },
+      },
+    };
+
+    //递归
+    // function printReverseList(list, arr) {
+    //   if (list.next) {
+    //     printReverseList(list.next);
+    //   }
+    //   console.log(list.value);
+    // }
+
+    //循环
+    function printReverseList(list) {
+      let arr = [];
+      let temp = list;
+      while (temp) {
+        arr.push(temp.value);
+        temp = temp.next;
+      }
+      while (arr.length > 0) {
+        console.log(arr.pop());
+      }
+    }
+    
+    printReverseList(list);
+  </script>
+  
+</body>
+</html>

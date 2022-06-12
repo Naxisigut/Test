@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        /* 所有弹性元素高度不固定 */
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-items: center;
+            align-content: stretch;
+            /* align-content: space-around; */
+            /* 这里align-items: center;设置和不设置是两个效果，会导致单行居中，说明align-items在多行时也是会生效的 */
+            /* 但是两行代码所实现的效果其实和align-content: space-around; 是一样的，所以在多行时没有必要去设置align-items */
+        }
+        .son1{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+
+        .box2{
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-content: stretch;
+            align-items: center;
+        }
+        .son2{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+        .box2 .spe{
+            /* 这里其中一个子元素把第一行的行高撑开了，其它盒子依然保持整行的居中，说明align-items: center;的效果是根据行高调整的 */
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="son1">1</div>
+        <div class="son1">2</div>
+        <div class="son1">3</div>
+        <div class="son1">4</div>
+        <div class="son1">5</div>
+        <div class="son1">6</div>
+    </div>
+    <div class="box2">
+        <div class="son2">1</div>
+        <div class="son2">2</div>
+        <div class="son2 spe">3</div>
+        <div class="son2">4</div>
+        <div class="son2">5</div>
+        <div class="son2">6</div>
+    </div>
+    </div>
+</body>
+</html>

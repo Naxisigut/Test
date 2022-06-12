@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gran{
+            position: relative;
+            width: 1000px;
+            height: 1000px;
+            background-color: blue;
+        }
+        .father{
+            height: 800px;
+            width: 400px;
+            background-color: #bfa;
+        }
+        .son1{
+            height: 100px;
+            background-color: red;
+        }
+        .son2{
+            position: absolute;
+            /* 百分比参照的对象是.gran，而不是.father */
+            /* width: 50%;
+            height: 50%; */
+
+            /* inherit继承自.father，而不是.gran */
+            width: inherit;
+            height: inherit;
+            
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="gran">
+        <div class="father">
+            <div class="son1"></div>
+            <div class="son2"></div>
+        </div>
+    </div>
+</body>
+</html>

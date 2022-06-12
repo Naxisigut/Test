@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" value="初始">
+  <script>
+    //DOM对象的属性和对应HTML的特性一般会双向同步改变，但是input的value属性是个例外
+    //input的value只能从特性同步至属性，不能从属性同步至特性
+
+    //初始化
+    let input = document.querySelector('input')
+    console.log('初始特性', input.getAttribute('value'));
+    console.log('初始属性', input.value);
+    
+    input.setAttribute('value', '改变特性1')
+    console.log('特性', input.getAttribute('value'));
+    console.log('属性', input.value);//改变特性，属性同步改变
+
+    input.attributes[1].value = '改变特性2'
+    console.log('特性', input.getAttribute('value'));
+    console.log('属性', input.value);//改变特性，属性同步改变
+
+    input.value = '改变属性'
+    console.log('特性', input.getAttribute('value'));
+    console.log('属性', input.value);//改变属性，特性没有同步改变
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        /* 所有弹性元素高度不固定 */
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            align-content: center;
+        }
+        .son1{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+
+        .box2{
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-content: center;
+            /* 上一个盒子没有开启wrap，align-content失效；这个盒子开启了wrap，虽然依然是单行，但是align-content生效了，说明align-content是否生效取决于flex-wrap，而不是是否单行*/
+        }
+        .son2{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="son1">1</div>
+        <div class="son1">2</div>
+    </div>
+    <div class="box2">
+        <div class="son2">1</div>
+        <div class="son2">2</div>
+    </div>
+    </div>
+</body>
+</html>

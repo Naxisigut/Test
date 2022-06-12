@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        /* 所有弹性元素高度不固定 */
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-content: stretch;
+            /* 设置项目高度为auto，或者不设置项目高度，此时侧轴上项目被拉伸至填满状态 */
+        }
+        .son1{
+            width: 100px;
+            /* height: auto; */
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+
+        /* 部分弹性元素高度不固定 */
+        .box2{
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            /* align-content: stretch; */
+            /* 如果第一行的高度固定，第二行不设高度，此时第二行被拉伸，但拉伸之后的高度非常奇怪，不知道是怎么算出来的 */
+            /* 所以对于多行的弹性盒子，尤其是项目高度不固定时，不要不设置align-content，也不要设置为stretch */
+        }
+        .son2{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+        .box2 .spe{
+            width: 100px;
+            /* height: 100px; */
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+
+        /* 所有元素高度固定且总高度小于容器侧轴长度 */
+        .box3{
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            /* align-content: stretch; */
+            /* 此时元素排成两行，但是每一行的高度之和为侧轴总长，所以元素无法填满一行，中间有很大间隔 */
+        }
+        .son3{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+
+        /* 所有元素高度固定且总高度大于容器侧轴长度 */
+        .box4{
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            /* align-content: stretch; */
+            /* 此时元素排成两行，但是每一行的行高由最高的元素决定，所以产生了溢出 */
+        }
+        .son4{
+            width: 100px;
+            height: 300px;
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="son1">1</div>
+        <div class="son1">2</div>
+        <div class="son1">3</div>
+        <div class="son1">4</div>
+        <div class="son1">5</div>
+        <div class="son1">6</div>
+    </div>
+    <div class="box2">
+        <div class="son2">1</div>
+        <div class="son2">2</div>
+        <div class="son2">3</div>
+        <div class="son2">4</div>
+        <div class="son2">5</div>
+        <div class="spe">6</div>
+    </div>
+    <div class="box3">
+        <div class="son3">1</div>
+        <div class="son3">2</div>
+        <div class="son3">3</div>
+        <div class="son3">4</div>
+        <div class="son3">5</div>
+        <div class="son3">6</div>
+    </div>
+    <div class="box4">
+        <div class="son4">1</div>
+        <div class="son4">2</div>
+        <div class="son4">3</div>
+        <div class="son4">4</div>
+        <div class="son4">5</div>
+        <div class="son4">6</div>
+    </div>
+</body>
+</html>

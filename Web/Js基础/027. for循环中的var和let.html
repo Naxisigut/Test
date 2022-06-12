@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //for循环中var的变量是全局的，在循环外也能访问到，循环结束后也依然存在
+    //for循环中let的变量是块级作用域，只在当前次的循环中能够访问。也就是说for有多少次循环，就创造了多少个词法环境
+    for(var i = 0; i<3; i++){}
+    for(let j = 0; j<3; j++){}
+
+    console.log(i);//3
+    console.log(j);//报错
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    "use strict";
+    let company = { // 是同一个对象，简洁起见被压缩了
+      sales: [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 1600 }],
+      development:
+      {
+        sites: [{ name: 'Peter', salary: 2000 }, { name: 'Alex', salary: 1800 }],
+        internals: [{ name: 'Jack', salary: 1300 }]
+      }
+    }
+    let company1 = { sales: [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 1600 }] }
+
+    function salary(obj) {
+      let sum = 0
+      if (Array.isArray(obj)) {
+        for (let ele of obj) {
+          sum += ele.salary
+        }
+      } else {
+        for (let prop in obj) {
+          sum += salary(obj[prop])
+        }
+      }
+      return sum
+    }
+    console.log(salary(company));
+  </script>
+</body>
+
+</html>

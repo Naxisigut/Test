@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //结论：
+      // 1.构造函数中都是执行语句，遵循语法规则，没有简写
+      // 2.构造函数中的键如果没被赋值，是不会被写入最后的对象的。
+
+      // function B() {
+      //   this.name;
+      //   this.age = 19;
+      // }
+      // let b = new B();
+      // console.log(b);
+      // console.log(b.name); //返回undefined，而不是空字符串，说明name根本没有写入到对象中。所以构造函数中的key也必须赋值后才会被写入对象。
+
+      // function C(name) {
+      //   this.name;
+      //   this.age = 19;
+      // }
+      // let c = new C('鸣人');
+      // console.log(c);
+      // console.log(c.name); //返回undefined，说明构造函数不存在简写
+
+      // function D(name) {
+      //   this.name = name;
+      //   this.age = 19;
+      // }
+      // let d = new D('鸣人');
+      // console.log(d.name); //返回 '鸣人'。正常的构造函数。
+    </script>
+  </head>
+  <body></body>
+</html>

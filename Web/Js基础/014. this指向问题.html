@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <script>
+        // this一般都是谁调用，就指向谁
+        // 1. 在全局执行环境中, 非严格模式时，（在任何函数体外部）this 都指向全局对象。
+        //  严格模式时，this == undefined
+        'use strict'
+        // console.log(this === window); // true
+        // function fn() {
+        //     console.log(this); // window
+        // }
+        // fn()
+        // window.fn()
+
+        // 2. 定时器里面的this指向window
+        // setInterval(function() {
+        //     console.log(this); // window
+        // }, 1000)
+
+        // 3. 方法(指的是对象的函数)调用， 方法中的this指向 谁调用就指向谁
+        // var obj = {
+        //     name: 'qwe',
+        //     fn: function() { 
+        //         console.log(this);// obj
+        //     }
+        // }
+        // obj.fn()
+
+        // 4. 在函数内部，调用函数， 被调用函数 this的值取决于函数被调用的方式。
+        // var obj = {
+        //     name: 'qwe',
+        //     fn: function() { 
+        //         // console.log(this);// obj
+        //         test();// 普通的方式来调用 this window/undefined,参见1
+        //         obj1.fn1();// this 指向 Obj1
+        //     }
+        // }
+        // function test() {
+        //     console.log(this);
+        // }
+        // var obj1 = {
+        //     fn1: function () { 
+        //         console.log(this);
+        //     }
+        // }
+        // obj.fn()
+
+        // // 5. 事件函数里this的指向， 事件函数给谁绑定，指的就是谁
+        // document.querySelector('button').addEventListener('click', function() {
+        //     console.log(this); // button
+        // })
+        
+        // // 6. 构造函数中this指向构造函数的实例
+        // var that;
+        // function Star (uname) { // 
+        //     this.uname = uname;
+        //     // this 指向实例话对象
+        //     that= this;
+        // }
+        // var ldh = new Star('ldh');
+        // console.log( that == ldh); // true
+
+   
+        
+    </script>
+</body>
+
+</html>

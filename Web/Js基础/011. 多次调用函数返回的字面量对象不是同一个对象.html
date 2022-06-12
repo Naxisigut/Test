@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //结论：多次调用函数返回的字面量对象不是同一个对象
+
+    function F(uname) {
+      return {
+        uname: '鸣人',
+      };
+    }
+    let f = F();
+    let f2 = F();
+    f2.uname = '九尾';
+    console.log(f.uname, f2.uname); //输出鸣人,九尾，说明每次调用函数返回的不是同一个对象
+  </script>
+</html>

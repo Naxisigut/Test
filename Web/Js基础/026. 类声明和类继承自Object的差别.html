@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //所有的对象通常都继承自 Object.prototype ，并且可以访问“通用”对象方法，例如 hasOwnProperty 等。
+    //但是，如果我们像这样 "class Demo extends Object" 把它明确地写出来，那么结果会与简单的 "class Demo" 有所不同么？
+    class Demo{}
+    class Demo2 extends Object{}
+
+    console.log(Demo.__proto__ === Function.prototype); //true
+    console.log(Demo2.__proto__ === Object); //true
+    console.log(Object.__proto__ === Function.prototype); //true
+
+    //结论：类声明出的构造函数直接继承自所有函数的原型Function.prototype
+    //类继承Object出的构造函数继承自Object，Object再继承自Function.prototype
+    //也就是说继承的构造函数可以使用Object的静态方法，声明的构造函数不可以
+
+    //简而言之有两点区别：
+    //1.extends自Object会在构造函数里默认调用super()
+    //2.extends自Object，其[[porototype]]指向Object；直接class类声明，其[[porototype]]指向Function.prototype
+    
+    console.dir(Object);//随便找一个Object的静态方法，isFrozen()
+    Demo2.isFrozen() //没报错
+    Demo.isFrozen() //报错，没找到这个方法
+  </script>
+</body>
+</html>

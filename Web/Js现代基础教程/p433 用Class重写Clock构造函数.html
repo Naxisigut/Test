@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function Clock({ template }) {
+      //   let timer;
+      //   function render() {
+      //     let date = new Date();
+      //     let hours = date.getHours();
+      //     if (hours < 10) hours = '0' + hours;
+
+      //     let mins = date.getMinutes();
+      //     if (mins < 10) mins = '0' + mins;
+
+      //     let secs = date.getSeconds();
+      //     if (secs < 10) secs = '0' + secs;
+
+      //     let output = template.replace('h', hours).replace('m', mins).replace('s', secs);
+      //     // console.log(output);
+      //   }
+
+      //   this.stop = function () {
+      //     clearInterval(timer);
+      //   };
+
+      //   this.start = function () {
+      //     render();
+      //     timer = setInterval(render, 1000);
+      //   };
+      // }
+
+      // let clock = new Clock({ template: 'h:m:s' });
+      // clock.start();
+
+      class ClockClass{
+        constructor({ template }){
+          this.timer = null
+          this.template = template
+        }
+        render(){
+          let now = new Date()
+          let h = now.getHours()
+          h = h < 10? '0'+h :h
+          let m = now.getMinutes()
+          m = m < 10? '0'+m :m
+          let s = now.getSeconds()
+          s = s < 10? '0'+s :s
+          let output = this.template.replace('h',h).replace('m', m).replace('s', s)
+          console.log(`timer${this.timer}`, output);
+        }
+        stop(){
+          clearInterval(this.timer)
+        }
+        start(){
+          this.timer = setInterval(this.render.bind(this),1000) //要绑一下，否则会丢失this
+
+          //或者这个也可以
+          // this.timer = setInterval(()=>{
+          //   this.render()
+          //   console.log(this)
+          // },1000 ) 
+        }
+      }
+      let clock2 = new ClockClass({ template: 'h:m:s' })
+      clock2.start()
+      let clock3 = new ClockClass({ template: 'h:m:s' })
+      // clock3.start()
+      
+
+
+    </script>
+  </body>
+</html>

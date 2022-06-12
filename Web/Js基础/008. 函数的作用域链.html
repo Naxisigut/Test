@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //外部变量是指声明定义时的外部变量，而不是调用时的外部变量
+      let a;
+      function fn() {
+        let a = 2;
+        function fn2() {
+          console.log(a);
+        }
+        fn2();
+        fn3();
+      }
+      function fn3() {
+        console.log(a);
+      }
+      fn()//输出2,undefined,说明fn()中定义的a根本不在fn3()的作用域链之内。
+      //作用域链的起始域是自身定义之中，然后是函数定义的外面一个作用域
+      //这里fn3先在自身定义中找a，没有找到，然后在全局找，找到最上面的a未被赋值，所以返回undefined
+
+      // let a = 1;
+      // function fn() {
+      //   let a = 2;
+      //   function fn2() {
+      //     console.log(a);
+      //   }
+      //   fn2();
+      //   fn3(a);
+      // }
+      // function fn3(a) {
+      //   console.log(a);
+      // }
+      // fn(); //输出2,2
+    </script>
+  </head>
+  <body></body>
+</html>

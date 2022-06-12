@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+      //结论：三元运算符是块作用域
+      let a=0;
+      
+      // (a> 1)?
+      // a=1:
+      // a=2;
+      // //在三元运算符中可以赋值。
+      // console.log(a);//输出2  
+
+      // (a> 1)?
+      // let b:
+      // let b;
+      // //在三元运算符中声明变量，VS直接报错。
+
+
+      // (a> 1)?
+      // function c(){return 'dayu'}:
+      // function c(){return 'xiaoyu'};
+      // //在三元运算符中直接声明函数，不会报错，但是没有意义，下一行代码无法调用，因为不在作用域内。
+      // console.log(c());//这里报错，显示没有定义
+
+      let d;
+      (a> 1)?
+      d = function (){return 'dayu'}:
+      d = function (){return 'xiaoyu'};
+      //在三元运算符中通过函数表达式间接声明函数，OK。
+      console.log(d());//输出'xiaoyu' 
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

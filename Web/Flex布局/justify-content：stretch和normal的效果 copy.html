@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        /* 所有弹性元素高度不固定 */
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin-bottom: 10px;
+            display: flex;
+
+            justify-content: stretch;
+            /* 设置项目宽度为auto，或者不设置项目宽度，此时主轴上项目宽度由内容决定，justify-content: stretch不会产生类似于align-content: stretch的效果,即失效 */
+        }
+        .son1{
+            /* width: 100px; */
+            height: 100px;
+            background-color: pink;
+            box-sizing: border-box;
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="son1">1</div>
+        <div class="son1">2</div>
+        <div class="son1">3</div>
+    </div>
+</body>
+</html>

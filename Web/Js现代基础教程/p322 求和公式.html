@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict";
+    //递归
+    function sum(n) {
+      if(n==1){
+        return n
+      }else{
+        return n+sum(n-1)
+      }
+    }
+  
+    // function sum(n) {
+    //   return n == 1 ? 1 : n + sum(n - 1)
+    // }
+  
+    //循环
+    // function sum(n) {
+    //   let sum = 0
+    //   for (let i = 0; i <= n; i++) {
+    //     sum += i
+    //   }
+    //   return sum
+    // }
+  
+    //等差数列
+    // function sum(n){
+    //   return (1+n)*n/2
+    // }
+    console.log(sum(100));
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //结论：字面量对象在创建时键值对可以简写为可以函数调用的变量名，变量值会自动给到key值
+
+      // let a = {
+      //   // uname,  //此行浏览器直接报错,说明在创建对象时就一定要有键值对，有键无值是会报错的
+      //   age: 12,
+      // };
+      // console.log(a);
+
+      // function E(){
+      //   return{
+      //     uname, //同情况一一样，这一行直接报错
+      //   }
+      // }
+      // let e = E();
+
+      let uname = '鸣人';
+      let i = {
+        uname,
+      };
+      console.log(i); //输出'鸣人'，说明字面量创建对象可以使用简写
+      uname = 'w';
+      console.log(i); //输出'鸣人'，说明对象被创建以后外部变量不再影响对象
+
+      function H(){
+        return{
+          uname,
+        }
+      }
+      let h = H();
+      console.log(h);
+      console.log(h.uname);//输出w，说明函数返回对象字面量也可以使用简写
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //对象练习1
+      // let user = {};
+      // user.name = 'john';
+      // user.surname = 'Smith';
+      // user.name = 'Pete';
+      // delete user.name;
+      // console.log(user);
+
+      //对象练习2 判断对象是否为空
+      // function isEmpty(obj) {
+      //   let i = 0;
+      //   for (let key in obj) {
+      //     if (key != '') i++;
+      //   }
+      //   if (i == 0) {
+      //     return true;
+      //   }
+      //   return false;
+      // }
+      //这里不用这么麻烦，如果对象为空，则根本不会进入for in 循环，
+      // let schedule = {};
+      // alert(isEmpty(schedule)); // true
+      // schedule['8:30'] = 'get up';
+      // alert(isEmpty(schedule)); // false
+
+      //对象练习3  对象内元素加和
+      // function getObjSum(obj) {
+      //   let sum = 0;
+      //   for (let key in obj) {
+      //     sum += obj[key];
+      //   }
+      //   return sum;
+      // }
+
+      // let salaries = {
+      //   John: 100,
+      //   Ann: 160,
+      //   Pete: 130,
+      // };
+      // console.log(getObjSum(salaries));
+      // salaries = {};
+      // console.log(getObjSum(salaries));
+
+      //对象练习4 对象内数值加倍
+      // function multiplyNumeric(obj) {
+      //   for (let key in obj) {
+      //     if (typeof obj[key] == 'number') {
+      //       obj[key] *= 2;
+      //     }
+      //   }
+      // }
+
+      // let menu = {
+      //   width: 200,
+      //   height: 300,
+      //   title: 'My menu',
+      // };
+      // multiplyNumeric(menu);
+      // console.log(menu);
+
+      //对象练习5 加乘法计算器
+      // let cal = {
+      //   a: undefined,
+      //   b: undefined, //这两行不用预先写好，在执行下面的代码的时候自动会新增属性值
+      //   read() {
+      //     this.a = Number(prompt('请输入第一个数'));
+      //     this.b = Number(prompt('请输入第二个数'));//this.b = +promt('请输入第二个数') 更简洁
+      //   },
+      //   sum() {
+      //     return this.a + this.b;
+      //   },
+      //   mul() {
+      //     return this.a * this.b;
+      //   },
+      // };
+      // cal.read();
+      // console.log(cal.sum());
+      // console.log(cal.mul());
+
+      //对象练习6 链式调用
+      // let ladder = {
+      //   step: 0,
+      //   up() {
+      //     this.step++;
+      //     return this;
+      //   },
+      //   down() {
+      //     this.step--;
+      //     return this;
+      //   },
+      //   showStep: function () {
+      //     // 显示当前的 step
+      //     alert(this.step);
+      //     return this;
+      //   },
+      // };
+      // ladder.up().up().down().showStep().down().showStep(); //this返回的是对象本身，类型为object
+      // console.log(typeof ladder.up());
+
+      //对象练习7 两个函数 一个对象
+      // function A() {
+      //   return new B();
+      // }
+      // function B() {
+      //   return this
+      // }
+      // let a = new A();
+      // let b = new B();
+      // alert(a == b);
+      // console.log(a,b);
+      //这样虽然a和b是完全相同的两个对象，但alert的结果依然为false，因为并不是同一个对象。
+
+      /* 应该这样写： */
+      // let obj = {};
+      // function A() {
+      //   return obj;
+      // }
+      // function B() {
+      //   return obj;
+      // }
+      // let a = new A();
+      // let b = new B();
+      // alert(a == b); // true
+      // console.log(a,b);//这样A B返回的对象并不是自己new出来的，而是同一个外部已经定义好的对象
+
+      //对象练习8 加乘法计算器构造函数
+      // function Cal() {
+      //   this.read = function () {
+      //     this.a = +prompt('请输入第一个数');
+      //     this.b = +prompt('请输入第二个数');
+      //   };
+      //   this.sum = function () {
+      //     return this.a + this.b;
+      //   };
+      //   this.mul = function () {
+      //     return this.a * this.b;
+      //   };
+      // }
+
+      // let calculator = new Cal();
+      // calculator.read();
+      // alert('Sum=' + calculator.sum());
+      // alert('Mul=' + calculator.mul());
+
+      //对象练习9 累加器构造函数
+      // function Accumulator(startingValue) {
+      //   this.startingValue = startingValue;
+      //   this.value = this.startingValue;
+      //   this.read = function () {
+      //     this.value += +prompt('请输入');
+      //   };
+      // }
+
+      // let accumulator = new Accumulator(1); // 初始值 1
+      // accumulator.read(); // 添加用户输入的 value
+      // accumulator.read(); // 添加用户输入的 value
+      // alert(accumulator.value); // 显示这些值的总和
+    </script>
+  </head>
+  <body></body>
+</html>

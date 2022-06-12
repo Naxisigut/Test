@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //同一个函数多次调用返回的闭包函数具有独立的词法环境
+      function makeCounter() {
+        let count = 0;
+        return function () {
+          return count++;
+        };
+      }
+      let counter = makeCounter();
+      let counter2 = makeCounter();
+      console.log(counter());//0
+      console.log(counter());//1
+      console.log(counter());//2
+      console.log(counter2());//0
+      console.log(counter2());//1
+      console.log(counter2());//2
+      //两个函数引用的count是独立的
+    </script>
+  </body>
+</html>
